@@ -27,6 +27,7 @@ function checkForPalindrome(stringInput, revString) {
         return false;
     }
 
+        // return stringInput == revString;
 }
 
 // display string
@@ -61,9 +62,8 @@ function getValuesLoop() {
 
 
 function loopLetters(stringInput) {
-    let i = stringInput.length - 1;
 
-    for(i; i > stringInput.length - (i + 1); i--) {
+    for(let i = stringInput.length - 1; i > stringInput.length - (i + 1); i--) {
         
 
         if (stringInput[i] !=  stringInput[stringInput.length - (i + 1)]) {                
@@ -77,8 +77,9 @@ function loopLetters(stringInput) {
 
 
 function displayResultsLoop(trueOrFalse, ogString) {
-    
-    if (trueOrFalse == true) {
+    // Change heading with it's id/class
+    // Don't need trueOrFalse == true, trueOrFalse will be true or false
+    if (trueOrFalse) {
         document.getElementById('alert').classList.remove('invisible', 'alert-danger');
         document.getElementById('alert').classList.add('alert-success');
         document.getElementById('results').innerText = ogString + ' is a Palindrome!';

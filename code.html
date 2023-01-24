@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="css/site.css">
 </head>
 
-<body>
+<body class="bg-black">
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
@@ -52,7 +52,7 @@
                         </li>
                         <li class="nav-item">
                             <!-- Link to Github Repo -->
-                            <a class="nav-link" href="https://github.com">The Repo</a>
+                            <a class="nav-link" href="https://github.com/Regb18/JSPalindrome">The Repo</a>
                         </li>
                         <li class="nav-item">
                             <!-- Link to Portfolio -->
@@ -104,6 +104,7 @@
                                 return false;
                             }
                         
+                                // return stringInput == revString;
                         }
                         
                         // display string
@@ -138,9 +139,8 @@
                         
                         
                         function loopLetters(stringInput) {
-                            let i = stringInput.length - 1;
                         
-                            for(i; i > stringInput.length - (i + 1); i--) {
+                            for(let i = stringInput.length - 1; i > stringInput.length - (i + 1); i--) {
                                 
                         
                                 if (stringInput[i] !=  stringInput[stringInput.length - (i + 1)]) {                
@@ -154,8 +154,9 @@
                         
                         
                         function displayResultsLoop(trueOrFalse, ogString) {
-                            
-                            if (trueOrFalse == true) {
+                            // Change heading with it's id/class
+                            // Don't need trueOrFalse == true, trueOrFalse will be true or false
+                            if (trueOrFalse) {
                                 document.getElementById('alert').classList.remove('invisible', 'alert-danger');
                                 document.getElementById('alert').classList.add('alert-success');
                                 document.getElementById('results').innerText = ogString + ' is a Palindrome!';
@@ -170,9 +171,18 @@
                 </pre>
             </div>
             <div class="col-12 col-lg-4">
-                <p>The code is structured in one function</p>
-                <h5><code>displayMessage()</code></h5>
-                <p>This function displays the message in a Sweet Alert</p>
+                <p>This code is structured in 4 functions. There is a 5th function I used that completed the challenge in significantly less code. If you are curious about how the loop button works, please take a look at loopLetters().</p>
+                <h5><code>getValues()</code></h5>
+                <p>This function is my controller function that serves as the entry point for my values. The first thing this function does is grab the user's input from the page. We take the value and convert it to lowercase and use the replace functions to get rid of all spaces and punctuation. We then assign the next two functions, so we can get our reversed word, and our result which is a boolean. To finish it off, we use displayResults() to put the result on the HTML page.</p>
+                <h5><code>reverseAString()</code></h5>
+                <p>This is my first of two logic functions that are called by getValues(). The first thing to note is that this function has a parameter called stringInput. We use that parameter to pass the user's string into the function. In addition to the original string, I declare revString as an empty string variable. I then use a For loop to iterate through the originalString. Since strings function the same as arrays, I can use the index to add each letter to my revString variable. Once the loop has gone through the whole string, I return that string to my getValues() function, so I can use it for my next function.</p>
+                <h5><code>checkForPalindrome()</code></h5>
+                <p>This function is used to compare the user's input string with the reversed string we just created with the reverseAString() function. It simply returns true or false based on the result of the if statement. Commented out is a much simpler solution I learned since an if statement already returns true or false.</p>
+                <h5><code>displayResults()</code></h5>
+                <p>I use the displayResults() function to change the color of the div based on the boolean it receives from checkForPalindrome(), and display the reversed string. Since I want the div that the alert is in to stay in the same place, I use .classList.add() and .classList.remove() to make the div visible, and make it appear with the color corresponding to success or failure.</p>
+                <h5><code>loopLetters()</code></h5>
+                <p>This function I am very proud of figuring out because it boils the process down from the reverseAString and checkForPalindrome functions into four simple lines of code. First I make a loop that starts with i counting down from the end of the string, and it will only count down until it is less than the incrementing stringInput.length that is starting at 0. This means it'll only go halfway through the string. Inside the loop is an if statement that compares the letter at each position to eachother. If the statement is false at any comparison point we know the word is not a palindrome, but if the loop finishes then we know the string is indeed a palindrome.</p>
+                <p>The getValuesLoop and displayValuesLoop functions are here so I could create another button using this loopLetters function, but they serve the same purpose as those above.</p>
             </div>
         </div>
 
