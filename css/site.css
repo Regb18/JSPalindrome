@@ -66,10 +66,6 @@ footer {
     color: var(--reg-secondary-color);
 }
 
-.appLogo {
-    max-width: 350px;
-}
-
 .checkList {
     list-style-type: none;
 }
@@ -120,7 +116,8 @@ footer {
 .btn-warning:visited,
 .btn-warning:focus {
     filter: brightness(1.1) !important;
-    border-color: var(--reg-primary-color);
+    border-color: var(--reg-light-color);
+    background-color: transparent;
 }
 
 
@@ -142,4 +139,18 @@ footer {
     color: var(--reg-light-color);
     border-color: var(--reg-secondary-color);
     box-shadow: 0px 0px 0px 2px var(--reg-contact-box-shadow-color);
+}
+
+.appLogo {
+    max-width: 250px;
+}
+
+.footer-logo {
+    height: 50px;
+}
+
+@media (min-width: 380px) {
+    .appLogo {
+        max-width: 350px;
+    }
 }
